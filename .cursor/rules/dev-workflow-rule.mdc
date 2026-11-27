@@ -8,9 +8,13 @@ alwaysApply: true
 
 docs/DEVELOPMENT_WORKFLOW.md
 
-誠信：
+誠信／四態：
 
 docs/AGENT_INTEGRITY.md
+
+待驗證：
+
+docs/VERIFICATION_PENDING.md
 
 入口：
 
@@ -22,18 +26,22 @@ docs/ENGINEERING_BACKLOG.md
 
 ## Agent 必須遵守
 
-1. 開發前閱讀 PRD／SPEC／TDD／AGENT_INTEGRITY／既有測試。
+1. 開發前閱讀 PRD／SPEC／TDD／AGENT_INTEGRITY／VERIFICATION_PENDING／既有測試。
 2. 遵循 TDD（`docs/test/TDD.md`、`tdd-rule.mdc`）。
 3. 不得放寬驗收斷言或成熟工具門檻；不得用正式／敏感生產資料做自動化測試。
 4. 本機 pytest ≠ GitHub CI ≠ 人工 UAT。
-5. 本機正式驗收＝逐項成熟工具（ruff／format／mypy／pytest）各記 exit code；無自訂 Overall PASS。
-6. 僅在明確授權時 Commit；不得自行 Push、開 PR 或 Merge。
-7. 禁止 Force Push 或改寫遠端歷史，無例外。
-8. 不得擅自使用個人 GitHub Token 或擴大寫入權限。
-9. Code Review：PASS／PASS WITH NOTES／FAIL；未授權不得改碼或 Merge。
-10. CI 以 `.github/workflows/pytest.yml` 為準；未跑遠端 CI 標 NOT_RUN。
-11. 不得因 PR CLEAN 或 CI 綠燈自行 Merge。
-12. 規範衝突時不得自行選較寬鬆規則。
-13. 不得擅自啟動 DEFERRED Backlog；不得為規格完整性製造假性 PASS。
+5. 本機正式驗收＝逐項成熟工具（ruff／format／mypy／pytest）各記 exit code 與工程四態；無自訂 Overall PASS。
+6. 工程驗收僅 `PASS`｜`FAIL`｜`PENDING`｜`N/A`；缺條件→`PENDING` 並登記 VERIFICATION_PENDING；不得虛構 PASS。
+7. 工具採用 `NOT_ADOPTED` 不是四態；不得直接等同 `N/A`。
+8. 僅在明確授權時 Commit；不得自行 Push、開 PR、Merge 或 Tag。
+9. 禁止 Force Push 或改寫遠端歷史，無例外。
+10. 不得擅自使用個人 GitHub Token 或擴大寫入權限。
+11. Code Review：PASS／PASS WITH NOTES／FAIL；未授權不得改碼或 Merge；不得自我審查冒充 Independent CR。
+12. CI 以 `.github/workflows/pytest.yml` 為準；未跑遠端 CI 工程層標 PENDING。
+13. 不得因 PR CLEAN 或 CI 綠燈自行 Merge。
+14. 規範衝突時不得自行選較寬鬆規則；未決衝突標 PENDING。
+15. 不得擅自啟動 DEFERRED Backlog；不得為規格完整性製造假性 PASS。
+16. 獨立驗收依風險選擇隔離；Worktree／Clone ≠ OS 沙箱；禁未授權寫正式 DB。
+17. 不得盲目全庫替換狀態字串；不得改寫歷史 FAIL 或 hooks 原生 detection_status。
 
 若權威檔不存在或衝突，先報告，不得自行假定。

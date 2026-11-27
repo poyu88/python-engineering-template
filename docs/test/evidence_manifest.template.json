@@ -1,17 +1,22 @@
 {
   "$schema_comment": "非敏感證據 Manifest 範本。禁止填入真實密鑰、個資或生產明細。",
-  "manifest_version": "1.0",
+  "manifest_version": "1.1",
   "source_commit": "UNKNOWN",
   "created_at": "UNKNOWN",
   "checks": [
     {
       "id": "EXAMPLE-01",
-      "status": "NOT_RUN",
+      "status": "PENDING",
       "command": [],
       "exit_code": null,
       "evidence_path": null,
-      "notes": "以 PASS|FAIL|NOT_RUN|BLOCKED|NOT_APPLICABLE 填寫 status"
+      "notes": "工程驗收 status 僅填 PASS|FAIL|PENDING|N/A。缺規則／資料／環境／權限時用 PENDING，並登記 docs/VERIFICATION_PENDING.md。"
     }
   ],
-  "overall": "NOT_RUN"
+  "overall": "NOT_RUN",
+  "overall_deprecation": {
+    "status": "DEPRECATED",
+    "message": "overall 不得作為工程驗收依據，不得用於聚合 PASS。欄位暫保留以相容既有消費者；資料型別與歷史合法值語意未改。刪除 overall 須待 VERIFICATION_PENDING VP-002 完成並另授權。",
+    "engineering_acceptance": "use checks[].status only (PASS|FAIL|PENDING|N/A); no overall aggregator"
+  }
 }
