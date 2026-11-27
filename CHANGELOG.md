@@ -1,14 +1,24 @@
 # Changelog
 
-## 1.1.0-template — 2026-11-27（候選；尚未正式發布／無 Tag）
+## 1.1.0-template — 2026-11-27／28（已 Merge；尚未 Tag／正式發布）
+
+### 合併與 CI 結案（Stage C.6）
+
+- PR [#1](https://github.com/poyu88/python-engineering-template/pull/1) 已 MERGED；Merge Commit `a86ba5d369b00fcb800a824e0975572864ee7e65`。
+- 治理 Commit（PR head）`d71f302d17b2fae344084e8e859eb7422f4d5690`：PR CI run `46028699714` SUCCESS。
+- master push CI run `46030784881` SUCCESS（驗證 Merge Commit `a86ba5d…`；**不得**套用至尚未建立的新 Commit）。
+- VP-001 Remote CI → **PASS**；VP-002-D／VP-003 仍 **PENDING**。
+- 文件規範版本維持 `1.1.0-template`；預定未來 Git Tag 為 **`v1.1.0`**（待 Owner 授權；指向結案合併後且該 SHA CI 通過之 Commit）。**尚未**打 Tag／正式發布。
+
+### 治理內容（原候選說明，保留）
 
 - 工程驗收狀態統一為四態：`PASS`｜`FAIL`｜`PENDING`｜`N/A`（見 `docs/AGENT_INTEGRITY.md`）。
 - 新增 `docs/VERIFICATION_PENDING.md`：持久化待驗證事項與重驗條件。
 - `DEVELOPMENT_WORKFLOW`：風險導向 Isolated Verification；權威表納入待驗證文件。
-- Evidence Manifest：`checks[].status` 改四態說明；`overall` **DEPRECATED**（欄位保留，相容性 PENDING）。
+- Evidence Manifest：`checks[].status` 改四態說明；`overall` **DEPRECATED**（欄位保留；外部相容 VP-002-D 仍 PENDING）。
 - 區分工具採用 `NOT_ADOPTED` 與驗收 `N/A`；禁止新建 Overall PASS 聚合器。
 - 對齊 `AGENTS.md`、README、`.cursor/rules/dev-workflow-rule.mdc`、UAT 範本、KNOWN_LIMITATIONS 對照說明。
-- **不**變更 CI／Lockfile／hooks 程式／品質門檻；**不**建立 Git Tag。
+- **不**變更 CI／Lockfile／hooks 程式／品質門檻；Tag 仍待 Owner 授權。
 
 ## 1.0.0-template — 2026-11-27（Backup Consolidation）
 
