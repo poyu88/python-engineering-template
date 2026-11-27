@@ -1,0 +1,17 @@
+{
+  "$schema_comment": "非敏感證據 Manifest 範本。禁止填入真實密鑰、個資或生產明細。",
+  "manifest_version": "1.0",
+  "source_commit": "UNKNOWN",
+  "created_at": "UNKNOWN",
+  "checks": [
+    {
+      "id": "EXAMPLE-01",
+      "status": "NOT_RUN",
+      "command": [],
+      "exit_code": null,
+      "evidence_path": null,
+      "notes": "以 PASS|FAIL|NOT_RUN|BLOCKED|NOT_APPLICABLE 填寫 status"
+    }
+  ],
+  "overall": "NOT_RUN"
+}

@@ -1,0 +1,27 @@
+---
+alwaysApply: true
+---
+
+# TDD 強制開發規則
+
+所有新增功能、功能修改及 Bug 修正，
+必須遵循：
+
+docs/test/TDD.md
+
+## 執行要求
+
+1. 開發前先閱讀 TDD.md。
+2. 嚴格遵循 RED → GREEN → REFACTOR → REGRESSION。
+3. RED 必須是實際需求行為尚未滿足造成的失敗。
+4. GREEN 只能做讓測試通過的最小實作。
+5. REFACTOR 不得改變既有行為。
+6. REGRESSION 執行完整成熟工具檢查：`uv run --locked pytest -q`，以及任務要求的 ruff／format／mypy。
+7. 保留真實測試輸出。
+8. 更新 docs/test/TDD_STATUS.md。
+9. 不得虛構 RED 歷史或削弱既有斷言。
+10. 不得使用正式／敏感生產資料進行自動化測試。
+11. 不得擅自啟動 ENGINEERING_BACKLOG 的 DEFERRED 項。
+
+若 TDD.md 不存在或內容不一致，
+先報告問題，不得自行假定符合規範。

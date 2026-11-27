@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+## Python 環境建置
+
+使用 uv 管理 Python 環境
+- 必要時以 `uv init` 初始專案使用 Python **3.11**（與 `.python-version`、`pyproject.toml` 的 `requires-python = ">=3.11"`、以及 `.github/workflows/pytest.yml` 的 `python-version: "3.11"` 對齊）
+- 套件均以 `uv add` 加入專案
+- **3.11 為已驗證基準**；不得宣稱其他 Python 版本已通過相容性驗證
+
+## Windows 環境注意事項
+
+- Windows 中 Python 預設會以系統的編碼輸出文字，在繁體中文版會是 Big5，也就是 CP950 編碼，請特別留意

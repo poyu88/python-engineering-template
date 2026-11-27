@@ -1,0 +1,33 @@
+---
+alwaysApply: true
+---
+
+# Python 開發規則
+
+## 技術棧與環境
+
+- **Python 版本**：3.11（已驗證基準）
+- **套件管理器**：**必須使用 uv**
+- **依賴**：根目錄 `pyproject.toml`／`uv.lock` 為唯一權威
+- **應用程式位置**：`src/`
+- **風格**：`docs/CODING_STANDARDS.md`
+
+## 使用 uv
+
+一律在專案根目錄：
+
+```bash
+uv sync --locked --dev
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+```
+
+## 強制性規則
+
+- 只能使用 `uv`；不使用 `requirements.txt`／手動 venv
+- 新碼遵守 Coding Standards（Google Docstring／Type Hints／選定 Ruff）
+- 不得無需求新增依賴
+- `hooks/`、`tests/support/` 與 `src/` 同受 Mypy Strict
+- 不得重新引入未授權的自訂 Quality Gate 聚合器
