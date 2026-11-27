@@ -46,10 +46,10 @@
 
 | ID | Requirement | Acceptance Criteria | Status | Reason | Evidence | Next Action |
 |---|---|---|---|---|---|---|
-| VP-001 | 遠端 GitHub Actions CI 實跑結果 | YAML 必要 Job 皆有真實遠端執行證據；各 Job 可標工程四態 | PENDING | 本機／文件無法替代遠端 CI；歷史用語 NOT_RUN | none（候選 PR／CI 證據於 Stage C.1 後追加） | Owner 建立／合併流程中記錄 run URL；各 Job 獨立標四態後重驗 |
-| VP-002 | Evidence Manifest 相容性（完整範圍） | 見下方「VP-002 範圍」；**D 層**須有外部／私人消費者契約或 Schema／測資後才可 PASS | PENDING（**僅 D＝VP-002-D**） | 缺可信外部消費者契約／Schema／驗證資料；不得以 A／B／C 推論 D；不得建假性消費者。Owner 於候選 PR 接受殘餘風險（方案 A）**≠** D PASS | `docs/test/evidence_manifest.template.json`；repo 內無 Python／CI 讀取 | 取得消費者清單或契約後重驗；通過前不得刪 `overall`；另授權才改 Manifest |
-| VP-003 | Cursor IDE runtime 下敏感 Hooks 行為 | 在真實 Cursor runtime 重驗 hooks 契約與 fail-open 行為 | PENDING | 既有證據僅 CLI stdin／stdout；runtime 歷史 NOT_RUN；CI 綠燈不得改本項為 PASS | KNOWN_LIMITATIONS／ENG-008；`EV-F09-CLI-LOGS`（若 Owner 提供） | Owner 授權 runtime 實測；不改 hooks 程式字串；結果追加登記 |
-| VP-004 | 治理 1.1 文件 Independent CR 閉環 | 非實作 Agent 之 Independent CR（含 B.2 局部複審）完成且結論可接受 | **PASS** | **僅**表示 Independent CR 閉環完成（B：PASS WITH NOTES；B.2：PASS WITH NOTES；F-CR-01～06 獨立複審 PASS）。**不**表示 VP-001／VP-002-D／VP-003 或正式發布已完成 | 見下方「Stage B.2 Independent CR 閉環紀錄」；原始報告不得覆寫 | 無（閉環完成）；後續正式發布另授權 |
+| VP-001 | 遠端 GitHub Actions CI 實跑結果 | YAML 必要 Job（ruff／mypy／pytest）皆有真實遠端執行證據且 SUCCESS | **PASS** | PR CI 與合併後 master CI 均 success；歷史用語 NOT_RUN 已由實跑取代（見下方 Stage C.6 證據）。**不**因此將 VP-002-D／VP-003 改為 PASS | 見「Stage C.6 — Remote CI 結案證據」 | 無（Remote CI 結案）；Tag／正式發布另授權 |
+| VP-002 | Evidence Manifest 相容性（完整範圍） | 見下方「VP-002 範圍」；**D 層**須有外部／私人消費者契約或 Schema／測資後才可 PASS | PENDING（**僅 D＝VP-002-D**） | 缺可信外部消費者契約／Schema／驗證資料；不得以 A／B／C 或 CI 綠燈推論 D；候選 PR 方案 A **≠** 正式發布／D PASS | `docs/test/evidence_manifest.template.json`；repo 內無 Python／CI 讀取 | 取得消費者清單或契約後重驗；通過前不得刪 `overall`；另授權才改 Manifest |
+| VP-003 | Cursor IDE runtime 下敏感 Hooks 行為 | 在真實 Cursor runtime 重驗 hooks 契約與 fail-open 行為 | PENDING | 既有證據僅 CLI stdin／stdout；runtime 歷史 NOT_RUN；**CI 通過不得**改本項為 PASS | KNOWN_LIMITATIONS／ENG-008；`EV-F09-CLI-LOGS`（若 Owner 提供） | Owner 授權 runtime 實測；不改 hooks 程式字串；結果追加登記 |
+| VP-004 | 治理 1.1 文件 Independent CR 閉環 | 非實作 Agent 之 Independent CR（含 B.2 局部複審）完成且結論可接受 | **PASS** | **僅**表示 Independent CR 閉環完成（B／B.2：PASS WITH NOTES；F-CR-01～06 複審 PASS）。**不**表示 VP-002-D／VP-003 或 Tag／正式發布已完成 | 見下方「Stage B.2 Independent CR 閉環紀錄」；原始報告不得覆寫 | 無（閉環完成）；Tag／正式發布另授權 |
 
 ### VP-002 範圍（至少）
 
@@ -109,9 +109,30 @@
 | 報告位置 | Independent CR 全文主要存在於 **Cursor 對話／Agent transcript／Owner 本機存檔**；**非**本 repo 內永久附件。Stage A／B.1 期間變更**尚未 Commit**，故**缺少**可 git 還原之精確階段快照 SHA |
 | 可取得範圍 | 本檔追加紀錄；工作樹治理文件現況；Owner 若另存報告請以 Evidence ID／路徑補登（目前無 repo 內報告檔） |
 | VP-004 | **PASS**＝CR 閉環完成 only |
-| 仍 PENDING | VP-001（遠端 CI）、VP-002-D（Manifest 外部相容）、VP-003（Hooks runtime） |
+| 仍 PENDING（B.2 當時） | VP-001（遠端 CI）、VP-002-D（Manifest 外部相容）、VP-003（Hooks runtime） — **其後** VP-001 於 Stage C.6 改 PASS（見下）；VP-002-D／VP-003 仍 PENDING |
 | Owner 候選 PR 風險接受（方案 A） | 允許保留現況 Manifest 契約提交**候選** PR；已知未驗證：`manifest_version`、`checks[].status` 枚舉、`overall_deprecation`、嚴格 Schema、外部／私人消費者契約。**僅**適用候選交付；**≠**正式發布授權；**≠**向後相容已驗證；**≠** VP-002-D PASS |
 | 禁止 | 覆寫／刪除原始 CR 報告；將對話證據宣稱為永久 repo 證據而不註明限度；假性消費者換 PASS |
+
+---
+
+## Stage C.6 — Remote CI 結案證據（追加；不抹史）
+
+> **來源**：Owner 手動 Merge PR #1 後之 Stage C.6 結案（2026-11-28）。
+> **範圍**：僅 Remote CI（VP-001）與合併狀態登錄；**不**重開 Findings；**不**將 CI 視為 Manifest／Hooks runtime PASS。
+
+| 欄位 | 內容 |
+|---|---|
+| PR | [#1](https://github.com/poyu88/python-engineering-template/pull/1) **MERGED**（`mergedAt` 2026-11-27T16:06:41Z） |
+| PR head（治理 Commit） | `d71f302d17b2fae344084e8e859eb7422f4d5690` |
+| Merge Commit（master） | `a86ba5d369b00fcb800a824e0975572864ee7e65` |
+| PR CI | run [`46028699714`](https://github.com/poyu88/python-engineering-template/actions/runs/46028699714)；event=`pull_request`；conclusion=`success`；`headSha`=`d71f302d…` |
+| PR CI Jobs | `ruff`／`mypy`／`pytest` 皆 SUCCESS（各含 lint／format 或 coverage 步驟，以該 run 為準） |
+| master CI | run [`46030784881`](https://github.com/poyu88/python-engineering-template/actions/runs/46030784881)；event=`push`；conclusion=`success`；`headSha`=`a86ba5d…`（= merge commit） |
+| master CI Jobs | `ruff`（lint＋format）／`mypy`／`pytest`（含 branch coverage）皆 SUCCESS |
+| VP-001 | **PASS**（PR CI＋master CI 雙證據；不得套用至未建立之新 Commit） |
+| 仍 PENDING | **VP-002-D**、**VP-003** |
+| Tag／Release | **尚未**建立（Merge ≠ Tag ≠ 正式發布）。預定 Tag 名 **`v1.1.0`**；文件規範版本維持 `1.1.0-template`。Tag 須指向結案合併後且**該 SHA** master CI 通過之 Commit；既有 CI 證據不得挪用於未建立之新 Commit |
+| 限制 | 未虛構 pytest 筆數或 coverage 百分比；僅記錄 Job／步驟 SUCCESS 結論 |
 
 ---
 
