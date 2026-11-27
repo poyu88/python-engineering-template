@@ -1,7 +1,7 @@
 # Engineering Backlog（正式技術債）
 
-> DEFERRED／EXPERIMENTAL 項目**不得**由 Agent 擅自啟動。須 Owner 授權，且具備充分需求、可靠參考與可驗證契約。  
-> 「至少三個實際專案」可作建議參考，**不是**形式化絕對門檻。  
+> DEFERRED／EXPERIMENTAL 項目**不得**由 Agent 擅自啟動。須 Owner 授權，且具備充分需求、可靠參考與可驗證契約。
+> 「至少三個實際專案」可作建議參考，**不是**形式化絕對門檻。
 > **IMPLEMENTED ≠ VERIFIED。** Phase 3 Independent CR = **FAIL**（保留）。
 
 狀態：`PROPOSED`｜`EXPERIMENTAL`｜`DEFERRED`｜`READY`｜`IN_PROGRESS`｜`IMPLEMENTED`｜`VERIFIED`
@@ -61,14 +61,14 @@
 | 欄位 | 內容 |
 |---|---|
 | Source Finding | F-04 |
-| Description | 五態模型與 overall；全 N/A 真空成功問題 |
-| Reason for Deferral | 缺乏穩定政策與足夠案例 |
-| Current Risk | 真空 PASS |
-| Interim Control | Integrity 文件記錄狀態；無自動 overall |
-| Required Preconditions | 狀態模型需求明確 |
-| Future Acceptance | 無 applicable required PASS → FAIL（或同等書面政策＋測試） |
-| Status | **DEFERRED / REMOVED FROM RELEASE SCOPE** |
-| Owner Decision | 延後 |
+| Description | 歷史五態／自訂 overall 聚合；全 N/A 真空成功問題 |
+| Reason for Deferral | 缺乏穩定政策與足夠案例；聚合器已移出發布範圍 |
+| Current Risk | 真空 PASS；誤用 manifest `overall` 當工程驗收依據 |
+| Interim Control | 工程驗收改為 Integrity **四態**（PASS／FAIL／PENDING／N/A）；逐項記錄；**無**自動 overall 聚合。Manifest `overall` 欄位保留且標 **DEPRECATED**（相容性見 `VERIFICATION_PENDING` VP-002）；不得恢復 Overall PASS 聚合器 |
+| Required Preconditions | 狀態模型需求明確；且 `overall` 外部消費者相容驗證完成（另授權） |
+| Future Acceptance | 無 applicable required PASS → FAIL（或同等書面政策＋測試）；刪除 `overall` 須另授權 |
+| Status | **DEFERRED / REMOVED FROM RELEASE SCOPE**（不恢復聚合；四態政策已於 1.1.0-template 文件層對齊） |
+| Owner Decision | 延後；2026-11-27 核准文件層四態，不重啟 ENG-001～004 聚合實作 |
 
 ---
 

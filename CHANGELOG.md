@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0-template — 2026-11-27（候選；尚未正式發布／無 Tag）
+
+- 工程驗收狀態統一為四態：`PASS`｜`FAIL`｜`PENDING`｜`N/A`（見 `docs/AGENT_INTEGRITY.md`）。
+- 新增 `docs/VERIFICATION_PENDING.md`：持久化待驗證事項與重驗條件。
+- `DEVELOPMENT_WORKFLOW`：風險導向 Isolated Verification；權威表納入待驗證文件。
+- Evidence Manifest：`checks[].status` 改四態說明；`overall` **DEPRECATED**（欄位保留，相容性 PENDING）。
+- 區分工具採用 `NOT_ADOPTED` 與驗收 `N/A`；禁止新建 Overall PASS 聚合器。
+- 對齊 `AGENTS.md`、README、`.cursor/rules/dev-workflow-rule.mdc`、UAT 範本、KNOWN_LIMITATIONS 對照說明。
+- **不**變更 CI／Lockfile／hooks 程式／品質門檻；**不**建立 Git Tag。
+
 ## 1.0.0-template — 2026-11-27（Backup Consolidation）
 
 - 新增 [`docs/BACKUP_AND_ARTIFACT_POLICY.md`](docs/BACKUP_AND_ARTIFACT_POLICY.md)；`AGENTS.md`／Workflow 精簡引用。
